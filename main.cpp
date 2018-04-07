@@ -24,6 +24,7 @@ int main(){
     cout << "Project wave"<<endl;
     while (true){
         cout << "\n"<<"1. Change enviorment parameters\n2. Change scene parameters\n3. Calculate\n";
+        rlutil::cls();
 
         char in = getch();
 
