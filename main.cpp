@@ -1,11 +1,18 @@
 #include<cmath>
 #include<iostream>
+#include "rlutil.h"
 
 using namespace std;
+using namespace rlutil;
 
+float temperature = 20;
+float humidity = 25;
+float pressure = 100.000;
+float meters = NULL;
 float sqr(float num){
     return pow(num,2);
 }
+
 
 float speedOfSound(float T, float Rh, float P){
     P=P*1000;
@@ -14,5 +21,43 @@ float speedOfSound(float T, float Rh, float P){
 }
 
 int main(){
+    cout << "Project wave"<<endl;
+    while (true){
+        cout << "\n"<<"1. Change enviorment parameters\n2. Change scene parameters\n3. Calculate\n";
 
+        char in = getch();
+
+        if(in == '1'){
+            string t_val = to_string(temperature);
+            string h_val = to_string(humidity);
+            string p_val = to_string(pressure);
+
+            int select = 0;
+
+            rlutil::cls();
+
+            cout << "Temperature (C): ";
+            cin >> temperature;
+            cout << endl << "Humidity (%): ";
+            cin >> humidity;
+            cout<<endl << "Pressure (kPa): ";
+            cin >> pressure;
+            cout<<endl;
+
+        }else if (in == '2'){
+            cout << "Distance (meters): "<<endl;
+            cin >> meters;
+        }else if (in == '3'){
+            if(meters == NULL){
+                cout << "Please enter a distance!!"<<endl;
+            }else{
+                cout << "Calculating speed of sound...";
+                float c = speedOfSound(temperature, humidity, pressure);
+                cout << "Speed of sound calculated at " << c<<"m/s"<<endl;
+                cout << "Calculating delay..."<<endl;
+                float delay = meters / c;
+                cout << "Delay is " << delay*1000 << "ms"<<endl;
+            }
+        }
+    }
 }
