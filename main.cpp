@@ -59,6 +59,8 @@ int main(){
                 cout << "Calculating delay..."<<endl;
                 float delay = meters / c;
                 cout << "Delay is " << delay*1000 << "ms"<<endl;
+                cout << "Press any key to continue..."<<endl;
+                rlutil::anykey();
             }
         }
     }
